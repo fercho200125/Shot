@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shot · Videos de Pedida de Mano</title>
+<meta name="description" content="Producción audiovisual de pedidas de mano. Tres formatos: 40 segundos, 1 minuto y 1 minuto 20.">
+<style>
+  :root{
+    --bg:#0e0d0c; --bg2:#171513; --card:#1c1a17; --line:#2e2a25;
+    --text:#f3ede4; --muted:#a79f93; --gold:#d4af6a; --gold2:#b88f45;
+  }
+  @media (prefers-color-scheme: light){
+    :root{ --bg:#faf6ef; --bg2:#f1eadd; --card:#fff; --line:#e3d9c6; --text:#1d1a16; --muted:#6f665a; --gold:#a9792a; --gold2:#8a5f1b; }
+  }
+  *{box-sizing:border-box;margin:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font:17px/1.6 Georgia,"Times New Roman",serif}
+  h1,h2,h3,.sans{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+  section{padding:72px 0}
+  .eyebrow{font:600 12px/1 system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+  h2{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:12px 0 14px;font-weight:600}
+  .lead{color:var(--muted);max-width:60ch}
+
+  nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+  .logo{font:700 20px system-ui,sans-serif;letter-spacing:.12em;color:var(--text);text-decoration:none}
+  .logo b{color:var(--gold)}
+  nav a.cta{font:600 14px system-ui,sans-serif}
+  .btn,nav a.cta{display:inline-block;background:var(--gold);color:#17120a;padding:11px 20px;border-radius:999px;text-decoration:none;font:600 15px system-ui,sans-serif}
+  .btn:hover{background:var(--gold2)}
+  .btn.ghost{background:none;color:var(--text);border:1px solid var(--line)}
+  .btn.ghost:hover{border-color:var(--gold)}
+
+  .hero{padding:96px 0 80px;text-align:center;background:radial-gradient(ellipse at top,color-mix(in srgb,var(--gold) 14%,transparent),transparent 60%)}
+  .hero h1{font-size:clamp(34px,7vw,64px);line-height:1.08;font-weight:600;margin:18px auto;max-width:18ch}
+  .hero h1 em{color:var(--gold);font-style:italic;font-family:Georgia,serif}
+  .hero p{color:var(--muted);max-width:56ch;margin:0 auto 30px}
+  .hero .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+  .grid3{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));margin-top:36px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 24px;display:flex;flex-direction:column}
+  .card.hl{border-color:var(--gold);position:relative}
+  .badge{position:absolute;top:-12px;left:24px;background:var(--gold);color:#17120a;font:700 11px system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:999px}
+  .dur{font:700 44px/1 system-ui,sans-serif;color:var(--gold)}
+  .dur small{font-size:16px;color:var(--muted);font-weight:500}
+  .card h3{font-size:20px;margin:10px 0 4px}
+  .card .for{color:var(--muted);font-size:15px;margin-bottom:16px}
+  .card ul{list-style:none;padding:0;margin:0 0 20px;flex:1}
+  .card li{padding:7px 0 7px 24px;position:relative;font-size:15.5px;border-top:1px solid var(--line)}
+  .card li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-family:system-ui}
+  .price{font:600 15px system-ui,sans-serif;margin-bottom:14px}
+  .price span{color:var(--gold)}
+  .card .btn{text-align:center}
+
+  .alt{background:var(--bg2)}
+  .steps{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-top:36px;counter-reset:s}
+  .step{counter-increment:s;padding-top:14px;border-top:2px solid var(--gold)}
+  .step::before{content:"0" counter(s);font:700 13px system-ui,sans-serif;color:var(--gold);letter-spacing:.1em}
+  .step h3{font-size:18px;margin:6px 0}
+  .step p{color:var(--muted);font-size:15px}
+
+  .extras{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin-top:36px}
+  .extra{border:1px solid var(--line);border-radius:12px;padding:18px;background:var(--card)}
+  .extra h3{font-size:16px;margin-bottom:4px}
+  .extra p{font-size:14.5px;color:var(--muted)}
+
+  .portfolio{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:36px}
+  .vid{aspect-ratio:16/9;border-radius:12px;border:1px dashed var(--line);background:var(--card);display:grid;place-items:center;color:var(--muted);font:14px system-ui,sans-serif;text-align:center;padding:12px}
+
+  details{border-bottom:1px solid var(--line);padding:16px 0}
+  summary{cursor:pointer;font:600 17px system-ui,sans-serif;list-style:none;display:flex;justify-content:space-between;gap:12px}
+  summary::after{content:"+";color:var(--gold);font-size:22px;line-height:1}
+  details[open] summary::after{content:"–"}
+  details p{color:var(--muted);margin-top:10px;max-width:68ch}
+
+  .terms{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:32px 28px;margin-top:30px}
+  .terms h3{font-size:16px;margin:22px 0 6px;color:var(--gold)}
+  .terms h3:first-child{margin-top:0}
+  .terms p,.terms li{font-size:15px;color:var(--muted)}
+  .terms ul{padding-left:20px}
+  .note{font:13px system-ui,sans-serif;color:var(--muted);margin-top:16px}
+
+  .contact{text-align:center}
+  .contact .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+  footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:var(--muted);font:14px system-ui,sans-serif}
+  @media (max-width:560px){section{padding:52px 0}.terms{padding:24px 18px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#">SH<b>O</b>T</a>
+    <a class="cta" href="#contacto">Cotizar</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Producción audiovisual · Pedidas de mano</div>
+    <h1>El momento en que dijo <em>"sí"</em>, para siempre.</h1>
+    <p>Grabamos tu pedida de mano de forma discreta y la convertimos en una pieza cinematográfica corta, lista para compartir con quienes más quieres.</p>
+    <div class="row">
+      <a class="btn" href="#paquetes">Ver formatos</a>
+      <a class="btn ghost" href="#contacto">Agendar fecha</a>
+    </div>
+  </div>
+</header>
+
+<section id="paquetes">
+  <div class="wrap">
+    <div class="eyebrow">Formatos</div>
+    <h2>Tres duraciones, según cuánta historia quieras contar</h2>
+    <p class="lead">Todas incluyen cobertura del momento de la pedida, edición profesional, color y música con licencia.</p>
+
+    <div class="grid3">
+      <article class="card">
+        <div class="dur">40<small> segundos</small></div>
+        <h3>Esencia</h3>
+        <p class="for">Ideal para Reels, TikTok e historias.</p>
+        <ul>
+          <li>Cobertura del momento de la pedida</li>
+          <li>1 camarógrafo</li>
+          <li>Video vertical 9:16 listo para redes</li>
+          <li>Corrección de color y música con licencia</li>
+          <li>Entrega en [X] días hábiles</li>
+        </ul>
+        <div class="price">Desde <span>$ por definir</span></div>
+        <a class="btn ghost" href="#contacto">Lo quiero</a>
+      </article>
+
+      <article class="card hl">
+        <span class="badge">Más pedido</span>
+        <div class="dur">1<small> minuto</small></div>
+        <h3>Historia</h3>
+        <p class="for">El equilibrio perfecto: contexto y emoción.</p>
+        <ul>
+          <li>Todo lo del formato Esencia</li>
+          <li>Planos previos: preparación y llegada</li>
+          <li>Reacciones de familia o amigos</li>
+          <li>Versión horizontal 16:9 + vertical 9:16</li>
+          <li>Entrega en [X] días hábiles</li>
+        </ul>
+        <div class="price">Desde <span>$ por definir</span></div>
+        <a class="btn" href="#contacto">Lo quiero</a>
+      </article>
+
+      <article class="card">
+        <div class="dur">1:20<small> minutos</small></div>
+        <h3>Cinematográfico</h3>
+        <p class="for">Una mini película de su historia.</p>
+        <ul>
+          <li>Todo lo del formato Historia</li>
+          <li>Narrativa completa: antes, durante y después</li>
+          <li>Segundo camarógrafo o dron *</li>
+          <li>Voz en off o frases de la pareja (opcional)</li>
+          <li>Entrega en [X] días hábiles</li>
+        </ul>
+        <div class="price">Desde <span>$ por definir</span></div>
+        <a class="btn ghost" href="#contacto">Lo quiero</a>
+      </article>
+    </div>
+    <p class="note">* El dron depende del lugar, el clima y los permisos de vuelo.</p>
+  </div>
+</section>
+
+<section class="alt" id="proceso">
+  <div class="wrap">
+    <div class="eyebrow">Proceso</div>
+    <h2>Así lo hacemos, sin arruinar la sorpresa</h2>
+    <div class="steps">
+      <div class="step"><h3>Cuéntanos tu plan</h3><p>Fecha, lugar, hora y cómo imaginas el momento. Todo es confidencial.</p></div>
+      <div class="step"><h3>Visita y guion</h3><p>Revisamos el lugar, definimos ángulos y dónde se esconde el equipo.</p></div>
+      <div class="step"><h3>Día de la pedida</h3><p>Llegamos antes, nos camuflamos y grabamos sin que ella/él lo note.</p></div>
+      <div class="step"><h3>Edición y entrega</h3><p>Recibes un adelanto rápido y luego el video final en alta calidad.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="extras">
+  <div class="wrap">
+    <div class="eyebrow">Personaliza</div>
+    <h2>Extras para hacerlo todavía más tuyo</h2>
+    <div class="extras">
+      <div class="extra"><h3>Teaser de 15 s</h3><p>Un adelanto rápido para subir a redes el mismo día.</p></div>
+      <div class="extra"><h3>Sesión de fotos</h3><p>Fotos de la pedida y retratos de la pareja con el anillo.</p></div>
+      <div class="extra"><h3>Dron</h3><p>Tomas aéreas en playa, cerro, parque o terraza.</p></div>
+      <div class="extra"><h3>Cámara lenta</h3><p>El instante del "sí" y las reacciones, a más cuadros por segundo.</p></div>
+      <div class="extra"><h3>Video de la sorpresa</h3><p>Mensajes grabados de familia y amigos, integrados al final.</p></div>
+      <div class="extra"><h3>Música a elección</h3><p>Usamos su canción (con licencia para uso personal).</p></div>
+      <div class="extra"><h3>Entrega exprés</h3><p>Video listo en 48–72 horas.</p></div>
+      <div class="extra"><h3>Pendrive o álbum digital</h3><p>Entrega en formato de regalo, con empaque.</p></div>
+      <div class="extra"><h3>Planificación del lugar</h3><p>Te ayudamos a elegir locación, hora dorada y montaje.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="portafolio">
+  <div class="wrap">
+    <div class="eyebrow">Portafolio</div>
+    <h2>Algunos de nuestros trabajos</h2>
+    <p class="lead">Reemplaza estos recuadros con tus videos (YouTube, Vimeo o archivo propio).</p>
+    <div class="portfolio">
+      <div class="vid">Video demo · 40 s</div>
+      <div class="vid">Video demo · 1 min</div>
+      <div class="vid">Video demo · 1:20</div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="eyebrow">Preguntas frecuentes</div>
+    <h2>Lo que más nos preguntan</h2>
+    <details><summary>¿Cómo graban sin que se den cuenta?</summary><p>Nos coordinamos contigo con anticipación. Llegamos antes, usamos lentes largos y ubicaciones discretas, o nos presentamos como parte del ambiente (turistas, otro grupo, personal del lugar).</p></details>
+    <details><summary>¿Y si ella/él dice que no o el plan cambia?</summary><p>Si debes reprogramar, avísanos con al menos 72 horas y movemos la fecha sin costo. Si el día mismo se cancela, aplican las condiciones de los términos.</p></details>
+    <details><summary>¿Cuándo recibo el video?</summary><p>Entregamos el video final en el plazo indicado en cada formato. Si quieres algo antes, existe la entrega exprés.</p></details>
+    <details><summary>¿Puedo publicar el video donde quiera?</summary><p>Sí, para uso personal y en tus redes. Para uso comercial se requiere autorización por escrito.</p></details>
+    <details><summary>¿Cuántas revisiones incluye?</summary><p>Una ronda de ajustes menores (corte, música, orden de escenas). Cambios mayores se cotizan aparte.</p></details>
+  </div>
+</section>
+
+<section class="alt" id="terminos">
+  <div class="wrap">
+    <div class="eyebrow">Legal</div>
+    <h2>Términos y condiciones</h2>
+    <div class="terms">
+      <h3>1. Reserva y pago</h3>
+      <p>La fecha se reserva con un anticipo del [50]% del valor del servicio. El saldo se paga hasta [24 horas] antes del evento o contra entrega, según se acuerde. Sin anticipo, la fecha no queda bloqueada.</p>
+
+      <h3>2. Cancelaciones y reprogramaciones</h3>
+      <ul>
+        <li>Reprogramación con 72 horas o más de aviso: sin costo, sujeto a disponibilidad.</li>
+        <li>Cancelación definitiva: el anticipo no es reembolsable, pues cubre la reserva de agenda.</li>
+        <li>Si Shot debe cancelar por causa propia, se devuelve el 100% de lo pagado o se reprograma.</li>
+      </ul>
+
+      <h3>3. Clima, lugar y fuerza mayor</h3>
+      <p>Las condiciones climáticas, restricciones del lugar o permisos pueden limitar el uso de dron u otros equipos. En ese caso se grabará con las alternativas disponibles, sin reembolso proporcional. Ante fuerza mayor se reprograma sin costo.</p>
+
+      <h3>4. Coordinación del cliente</h3>
+      <p>El cliente debe entregar con anticipación hora, lugar exacto y contacto de apoyo. Retrasos o cambios de último minuto pueden afectar la cobertura; Shot no garantiza tomas de momentos que no se pudieron anticipar o que ocurran fuera del lugar acordado.</p>
+
+      <h3>5. Entrega y revisiones</h3>
+      <p>El plazo de entrega comienza al recibir el material y la información necesaria (música, nombres, textos). Se incluye una ronda de ajustes menores; cambios adicionales o rehacer el montaje tienen costo extra.</p>
+
+      <h3>6. Derechos y uso del material</h3>
+      <p>Shot conserva los derechos de autor del video. El cliente recibe una licencia de uso personal y para redes sociales. Shot podrá usar fragmentos en su portafolio y redes, salvo que el cliente indique lo contrario por escrito antes del evento. El uso comercial requiere autorización.</p>
+
+      <h3>7. Música</h3>
+      <p>Se utiliza música con licencia. Si el cliente solicita una canción específica, esta puede estar sujeta a bloqueos por derechos de autor en plataformas como Instagram o YouTube; Shot no se responsabiliza por ello.</p>
+
+      <h3>8. Confidencialidad</h3>
+      <p>Toda la información de la sorpresa se maneja de forma reservada. El cliente se compromete a no revelar al equipo ante terceros durante el evento.</p>
+
+      <h3>9. Respaldo del material</h3>
+      <p>Shot conserva el material bruto por [90 días] tras la entrega. Pasado ese plazo no se garantiza su recuperación.</p>
+
+      <h3>10. Limitación de responsabilidad</h3>
+      <p>Aunque se toman todos los resguardos técnicos, Shot no responde por fallas imprevisibles de equipos o momentos irrepetibles. En tal caso la responsabilidad se limita al monto pagado por el servicio.</p>
+
+      <p class="note">Texto base de referencia. Los valores entre [corchetes] son editables y conviene que un abogado lo revise antes de usarlo con clientes.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div class="eyebrow">Hablemos</div>
+    <h2>¿Ya tienes fecha para pedirle matrimonio?</h2>
+    <p class="lead" style="margin:0 auto">Cuéntanos tu plan y te enviamos una cotización. Las fechas se reservan por orden de llegada.</p>
+    <div class="row">
+      <a class="btn" href="https://wa.me/56900000000?text=Hola%20Shot%2C%20quiero%20cotizar%20un%20video%20de%20pedida%20de%20mano">WhatsApp</a>
+      <a class="btn ghost" href="mailto:contacto@shot.cl">contacto@shot.cl</a>
+      <a class="btn ghost" href="https://instagram.com/">Instagram</a>
+    </div>
+  </div>
+</section>
+
+<footer>© <span id="y"></span> Shot · Producción audiovisual</footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
