@@ -1,9 +1,10 @@
 /* ——— Escritorio / tablet: barra flotante ——— */
 .topbar {
   position: fixed;
-  inset: 14px 0 auto;
+  inset: calc(14px + env(safe-area-inset-top, 0px)) 0 auto;
   z-index: 40;
-  padding-inline: var(--gutter);
+  padding-left: max(var(--gutter), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
   pointer-events: none;
 }
 
@@ -136,9 +137,9 @@
   .dock {
     display: block;
     position: fixed;
-    left: 10px;
-    right: 10px;
-    bottom: calc(10px + env(safe-area-inset-bottom));
+    left: max(10px, env(safe-area-inset-left, 0px));
+    right: max(10px, env(safe-area-inset-right, 0px));
+    bottom: calc(10px + env(safe-area-inset-bottom, 0px));
     z-index: 40;
     border-radius: 26px;
     padding: 6px;
