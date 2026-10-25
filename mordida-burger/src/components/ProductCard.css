@@ -1,0 +1,204 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: 0 20px 40px -28px rgb(0 0 0 / 0.8);
+  transition: transform 0.45s var(--ease-out), border-color 0.3s, box-shadow 0.45s var(--ease-out);
+  animation: card-in 0.6s var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 60ms);
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--line-strong);
+  box-shadow: 0 30px 50px -30px rgb(0 0 0 / 0.9);
+}
+
+.card:hover .visual--photo img {
+  transform: scale(1.045);
+}
+
+.card:hover .visual__art {
+  transform: rotate(0deg) scale(1.04);
+}
+
+.card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  padding: 20px 22px 20px;
+}
+
+.card__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.card__name {
+  font: 700 23px/1.05 var(--font-display);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.card__open {
+  text-align: left;
+  text-transform: inherit;
+  letter-spacing: inherit;
+}
+
+/* Toda la tarjeta abre la ficha */
+.card__open::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.card__open:focus-visible {
+  outline: none;
+}
+
+.card:has(.card__open:focus-visible) {
+  outline: 3px solid var(--violet-200);
+  outline-offset: 3px;
+}
+
+.card__price {
+  flex: none;
+  font: 700 21px/1 var(--font-display);
+  font-variant-numeric: tabular-nums;
+  color: var(--violet-200);
+}
+
+.card__price--muted {
+  color: var(--text-faint);
+}
+
+.card__desc {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.card__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.card__more {
+  font: 600 14px/1 var(--font-body);
+  color: var(--text-faint);
+  transition: color 0.2s;
+}
+
+.card:hover .card__more {
+  color: var(--cream);
+}
+
+.add-btn {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 18px 0 14px;
+  border-radius: var(--radius-pill);
+  background: var(--cream);
+  color: var(--violet);
+  font: 700 15px/1 var(--font-display);
+  transition: transform 0.25s var(--ease-spring), background-color 0.25s;
+}
+
+.add-btn:hover {
+  transform: scale(1.04);
+}
+
+.add-btn:active {
+  transform: scale(0.95);
+}
+
+.add-btn.is-added {
+  background: var(--violet-200);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  padding: 5px 10px;
+  border-radius: var(--radius-pill);
+  font: 700 12px/1 var(--font-body);
+  letter-spacing: 0.02em;
+}
+
+.chip--spicy {
+  background: var(--cream);
+  color: var(--violet);
+}
+
+/* ——— Insignia censurada ——— */
+.card--teaser {
+  background: linear-gradient(180deg, var(--violet), var(--violet-700));
+  border-color: rgb(255 250 230 / 0.18);
+}
+
+.censored {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.censored__pixels {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.censored__label {
+  position: relative;
+  padding: 12px 22px;
+  background: #000;
+  color: #fff;
+  font: 700 clamp(20px, 2.4vw, 28px) / 1 var(--font-display);
+  letter-spacing: 0.08em;
+}
+
+.censored__ghost {
+  position: absolute;
+  right: -6px;
+  bottom: -14px;
+  width: 34%;
+  height: auto;
+  filter: drop-shadow(0 10px 18px rgb(0 0 0 / 0.35));
+  animation: ghost-float 4s ease-in-out infinite;
+}
+
+@keyframes ghost-float {
+  50% {
+    transform: translateY(-8px) rotate(-3deg);
+  }
+}

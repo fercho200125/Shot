@@ -1,0 +1,108 @@
+/* Paneles flotantes sobre <dialog> nativo (ficha de producto y carrito) */
+dialog.sheet {
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--glass-border);
+  max-width: none;
+  max-height: none;
+  color: var(--text);
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+
+dialog.sheet::backdrop {
+  background: rgb(18 10 23 / 0.55);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  animation: backdrop-in 0.3s var(--ease-out);
+}
+
+dialog.sheet[data-closing]::backdrop {
+  animation: backdrop-out 0.28s var(--ease-out) forwards;
+}
+
+@keyframes backdrop-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes backdrop-out {
+  to {
+    opacity: 0;
+  }
+}
+
+.sheet__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 5;
+}
+
+.field {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--line-strong);
+  background: rgb(18 10 23 / 0.45);
+  color: var(--cream);
+  font-size: 16px;
+  line-height: 1.4;
+  resize: vertical;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.field::placeholder {
+  color: var(--text-faint);
+}
+
+.field:focus {
+  outline: none;
+  border-color: var(--violet-200);
+  box-shadow: 0 0 0 3px rgb(217 196 236 / 0.25);
+}
+
+/* Hoja inferior en móvil */
+@media (max-width: 759px) {
+  dialog.sheet {
+    inset: auto 0 0 0;
+    width: 100%;
+    max-height: calc(100dvh - 24px);
+    border-radius: 28px 28px 0 0;
+    border-bottom: 0;
+    animation: sheet-up 0.42s var(--ease-out);
+  }
+
+  dialog.sheet[data-closing] {
+    animation: sheet-down 0.3s var(--ease-out) forwards;
+  }
+
+  /* Asa visual de la hoja */
+  dialog.sheet::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    width: 40px;
+    height: 5px;
+    margin-left: -20px;
+    border-radius: 99px;
+    background: rgb(255 250 230 / 0.35);
+    z-index: 6;
+  }
+}
+
+@keyframes sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes sheet-down {
+  to {
+    transform: translateY(100%);
+  }
+}

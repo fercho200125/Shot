@@ -1,0 +1,49 @@
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border-radius: var(--radius-pill);
+  background: rgb(255 250 230 / 0.08);
+  border: 1px solid var(--line-strong);
+}
+
+.stepper button {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-pill);
+  color: var(--cream);
+  transition: background-color 0.2s, transform 0.2s var(--ease-spring);
+}
+
+.stepper button:hover:not(:disabled) {
+  background: rgb(255 250 230 / 0.12);
+}
+
+.stepper button:active:not(:disabled) {
+  transform: scale(0.9);
+}
+
+.stepper button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.stepper output {
+  min-width: 28px;
+  text-align: center;
+  font: 700 17px/1 var(--font-display);
+  font-variant-numeric: tabular-nums;
+}
+
+.stepper--lg button {
+  width: 48px;
+  height: 48px;
+}
+
+.stepper--lg output {
+  min-width: 36px;
+  font-size: 20px;
+}
