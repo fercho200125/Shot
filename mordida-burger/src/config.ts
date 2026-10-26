@@ -8,7 +8,8 @@ export interface BusinessConfig {
   whatsappNumber: string;
   address: string | null;
   hours: string | null;
-  social: { label: string; url: string }[];
+  /** `handle` es el usuario que se muestra en Contacto (ej. @mordida_burgersec). */
+  social: { label: string; handle?: string; url: string }[];
 }
 
 const envNumber = (import.meta.env.VITE_WHATSAPP_NUMBER as string | undefined) ?? '';
@@ -19,6 +20,5 @@ export const business: BusinessConfig = {
   whatsappNumber: (envNumber || '593984833313').replace(/\D/g, ''),
   address: 'Avenida J15 entre calles 294 y 295, barrio Jocay, Manta',
   hours: 'Todos los días, de 6:00 p. m. a 12:00 a. m.',
-  // Ejemplo: { label: 'Instagram', url: 'https://instagram.com/…' }
-  social: [],
+  social: [{ label: 'Instagram', handle: '@mordida_burgersec', url: 'https://www.instagram.com/mordida_burgersec' }],
 };

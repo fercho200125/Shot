@@ -68,13 +68,12 @@ WhatsApp, dirección, horario y redes sociales se editan en [`src/config.ts`](sr
 
 - Dirección: Avenida J15 entre calles 294 y 295, barrio Jocay, Manta.
 - Horario: todos los días, de 6:00 p. m. a 12:00 a. m.
-- Redes sociales: pendientes. Mientras la lista esté vacía, la web muestra "Por confirmar".
+- Redes sociales: Instagram [@mordida_burgersec](https://www.instagram.com/mordida_burgersec).
 
 ## Pendiente de confirmar con el negocio
 
 | Tema | Estado |
 | --- | --- |
-| Redes sociales | Se muestran como "Por confirmar". |
 | **Spicy Crunch Burger — $10.49** | En el PDF solo existe como **texto oculto** bajo el bloque "CENSORED". Lo que se ve en *Insignias* es Bacon Paradise ($6.50). Está en `menu.ts` con `published: false`. También hay texto oculto "Truffle Royale", sin precio, que no se incluyó. |
 | Insignia "CENSORED" | Aparece como tarjeta informativa ("Insignia secreta"), sin precio y sin opción de pedirla. |
 | Complementos o extras | El PDF no define ninguno, así que no hay extras a la venta. |

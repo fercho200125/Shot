@@ -61,7 +61,7 @@ export function Contact({ onOpenCart }: { onOpenCart: () => void }) {
                     <span key={s.url}>
                       {i > 0 && ' · '}
                       <a href={s.url} target="_blank" rel="noopener noreferrer">
-                        {s.label}
+                        {s.handle ? `${s.label} ${s.handle}` : s.label}
                       </a>
                     </span>
                   ))
