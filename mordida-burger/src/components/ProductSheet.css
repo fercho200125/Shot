@@ -1,7 +1,8 @@
 .psheet {
   display: flex;
   flex-direction: column;
-  max-height: inherit;
+  flex: 1 1 auto;
+  min-height: 0;
   overflow-y: auto;
 }
 
@@ -125,7 +126,7 @@
     inset: 0;
     margin: auto;
     width: min(940px, calc(100vw - 48px));
-    height: min(640px, calc(100dvh - 48px));
+    height: min(640px, calc(100% - 48px));
     border-radius: 32px;
     animation: pop-in 0.38s var(--ease-out);
   }
@@ -137,7 +138,7 @@
   .psheet {
     display: grid;
     grid-template-columns: 46% 1fr;
-    height: 100%;
+    grid-template-rows: minmax(0, 1fr);
     overflow: hidden;
   }
 

@@ -1,8 +1,8 @@
 .cart {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  max-height: inherit;
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 .cart__header {
@@ -41,7 +41,7 @@
 
 .cart__lines,
 .cart__review {
-  flex: 1;
+  flex: 1 1 auto;
   min-height: 0;
   margin: 0;
   padding: 8px 22px;
@@ -166,7 +166,7 @@
   justify-items: center;
   align-content: center;
   gap: 10px;
-  flex: 1;
+  flex: 1 1 auto;
   padding: 40px 28px 56px;
   text-align: center;
   color: var(--text-muted);
@@ -312,7 +312,6 @@
     inset: calc(12px + env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px))
       calc(12px + env(safe-area-inset-bottom, 0px)) auto;
     width: min(460px, calc(100vw - 24px));
-    height: calc(100dvh - 24px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
     border-radius: 30px;
     animation: drawer-in 0.42s var(--ease-out);
   }
@@ -323,10 +322,6 @@
 }
 
 @media (max-width: 759px) {
-  dialog.sheet--cart .cart {
-    max-height: calc(100dvh - 24px - env(safe-area-inset-top, 0px));
-  }
-
   .cart__header {
     padding-top: 26px;
   }
