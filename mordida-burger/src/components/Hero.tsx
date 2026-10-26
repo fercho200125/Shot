@@ -7,12 +7,12 @@ export function Hero() {
     <section id="inicio" className="hero" aria-labelledby="hero-title">
       <div className="hero__photo">
         <img
-          src={asset('img/products/bacon-paradise.webp')}
-          srcSet={`${asset('img/products/bacon-paradise-640.webp')} 640w, ${asset('img/products/bacon-paradise.webp')} 1024w`}
-          sizes="(min-width: 760px) 64vw, 100vw"
+          src={asset('img/products/portada.webp')}
+          srcSet={`${asset('img/products/portada-640.webp')} 640w, ${asset('img/products/portada.webp')} 1024w`}
+          sizes="(min-width: 1024px) min(100vw, 1500px), 100vw"
           width="1024"
           height="683"
-          alt="Hamburguesa Bacon Paradise con tocino, queso cheddar fundido y salsa Mordida"
+          alt="Tres hamburguesas de Mordida Burger en fila sobre una tabla de madera, con la Hawaiana al centro"
           fetchPriority="high"
         />
       </div>
@@ -21,7 +21,7 @@ export function Hero() {
         <img className="hero__logo" src={asset('img/brand/logo-512.webp')} width="512" height="512" alt="Mordida Burger" />
         <p className="eyebrow">Hamburguesas clásicas e insignias</p>
         <h1 id="hero-title" className="hero__title">
-          Una mordida <span>lo cambia todo.</span>
+          Hoy no <span>cocinas</span>
         </h1>
         <p className="hero__lead">Descubre nuestras hamburguesas clásicas y especialidades.</p>
         <div className="hero__actions">

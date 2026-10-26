@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { cartReducer, cartTotals, resolveLines } from './cart';
-import { buildOrderMessage, isValidWhatsappNumber, whatsappUrl } from './order';
+import { buildOrderMessage, formatWhatsappNumber, isValidWhatsappNumber, whatsappUrl } from './order';
 
 describe('pedido por WhatsApp', () => {
   const lines = resolveLines(
@@ -26,5 +26,10 @@ describe('pedido por WhatsApp', () => {
     expect(isValidWhatsappNumber('')).toBe(false);
     expect(whatsappUrl('', 'hola')).toBeNull();
     expect(whatsappUrl('593900000000', 'hola & adiós')).toBe('https://wa.me/593900000000?text=hola%20%26%20adi%C3%B3s');
+  });
+
+  it('formatea el número para mostrarlo', () => {
+    expect(formatWhatsappNumber('593984833313')).toBe('+593 98 483 3313');
+    expect(formatWhatsappNumber('5215512345678')).toBe('+5215512345678');
   });
 });

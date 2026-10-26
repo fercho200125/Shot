@@ -5,7 +5,7 @@
 
 .footer__inner {
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.8fr) minmax(0, 0.8fr) minmax(0, 1.2fr) minmax(0, 0.9fr);
   gap: 40px;
   padding-block: 56px 40px;
 }
@@ -59,6 +59,10 @@
   color: var(--text-muted);
 }
 
+.footer__muted + .footer__muted {
+  margin-top: 8px;
+}
+
 .footer__legal {
   padding-top: 24px;
   border-top: 1px solid var(--line);
@@ -73,6 +77,16 @@
 
   .footer__inner {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .footer__brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 760px) and (max-width: 1023px) {
+  .footer__inner {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .footer__brand {

@@ -25,10 +25,11 @@
   pointer-events: none;
 }
 
+/* La foto de portada ocupa todo el ancho y se funde detrás del texto */
 .hero__photo {
   position: absolute;
   inset: 0 0 0 auto;
-  width: 64%;
+  width: min(100%, 1500px);
 }
 
 .hero__photo img {
@@ -36,7 +37,8 @@
   height: 100%;
   object-fit: cover;
   object-position: 50% 55%;
-  mask-image: linear-gradient(90deg, transparent 0%, #000 34%), linear-gradient(0deg, transparent 0%, #000 22%);
+  mask-image: linear-gradient(90deg, rgb(0 0 0 / 0.1) 0%, rgb(0 0 0 / 0.28) 30%, #000 62%),
+    linear-gradient(0deg, transparent 0%, #000 22%);
   mask-composite: intersect;
   animation: hero-photo 1.6s var(--ease-out) both;
 }
@@ -90,19 +92,23 @@
 
 .hero__title {
   margin: 16px 0 18px;
-  font: 700 clamp(46px, 7.4vw, 96px) / 0.92 var(--font-display);
+  text-shadow: 0 2px 30px rgb(18 10 23 / 0.6);
+  font: 700 clamp(64px, 10vw, 128px) / 0.88 var(--font-display);
   letter-spacing: -0.025em;
   text-wrap: balance;
 }
 
+/* "cocinas" en lavanda, tono armónico con el violeta de marca */
 .hero__title span {
   display: block;
   color: var(--violet-200);
+  text-shadow: 0 0 48px rgb(180 138 214 / 0.35);
 }
 
 .hero__lead {
   font-size: clamp(17px, 1.6vw, 20px);
   color: var(--text-muted);
+  text-shadow: 0 1px 16px rgb(18 10 23 / 0.8);
   max-width: 34ch;
 }
 
@@ -136,7 +142,8 @@
   inset: auto 0 0;
 }
 
-@media (max-width: 759px) {
+/* Teléfono y tablet: foto arriba, texto debajo */
+@media (max-width: 1023px) {
   .hero {
     justify-content: flex-start;
     min-height: 0;
@@ -155,8 +162,12 @@
   }
 
   .hero__photo img {
-    object-position: 50% 60%;
+    object-position: 50% 50%;
     mask-image: linear-gradient(180deg, #000 62%, transparent 100%);
+  }
+
+  .hero__title span {
+    display: inline;
   }
 
   .hero__content {
@@ -164,6 +175,22 @@
     padding-bottom: 72px;
   }
 
+  .hero__facts {
+    margin-top: 28px;
+  }
+}
+
+@media (min-width: 760px) and (max-width: 1023px) {
+  .hero__photo {
+    aspect-ratio: 3 / 2;
+  }
+
+  .hero__content {
+    margin-top: -120px;
+  }
+}
+
+@media (max-width: 759px) {
   .hero__logo {
     width: 84px;
     height: 84px;
@@ -174,7 +201,7 @@
     flex: 1;
   }
 
-  .hero__facts {
-    margin-top: 28px;
+  .hero__title span {
+    display: block;
   }
 }

@@ -25,6 +25,11 @@ export function Footer() {
           </ul>
         </nav>
         <div>
+          <p className="footer__heading">Visítanos</p>
+          {business.address && <p className="footer__muted">{business.address}</p>}
+          {business.hours && <p className="footer__muted">{business.hours}</p>}
+        </div>
+        <div>
           <p className="footer__heading">Síguenos</p>
           {business.social.length ? (
             <ul>

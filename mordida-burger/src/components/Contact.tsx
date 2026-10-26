@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { business } from '../config';
-import { isValidWhatsappNumber } from '../lib/order';
+import { formatWhatsappNumber, isValidWhatsappNumber } from '../lib/order';
 import { ChatIcon, ClockIcon, HeartIcon, PinIcon } from './Icons';
 import './Contact.css';
 
@@ -43,7 +43,7 @@ export function Contact({ onOpenCart }: { onOpenCart: () => void }) {
             <Row icon={<ChatIcon />} label="WhatsApp">
               {isValidWhatsappNumber(number) ? (
                 <a href={`https://wa.me/${number}`} target="_blank" rel="noopener noreferrer">
-                  +{number}
+                  {formatWhatsappNumber(number)}
                 </a>
               ) : (
                 pending

@@ -16,12 +16,12 @@ export function About() {
       <div className="about__inner wrap">
         <figure className="about__photo">
           <img
-            src={asset('img/products/bacon-paradise-closeup.webp')}
-            srcSet={`${asset('img/products/bacon-paradise-closeup-640.webp')} 427w, ${asset('img/products/bacon-paradise-closeup.webp')} 683w`}
-            sizes="(min-width: 900px) 420px, 90vw"
-            width="683"
-            height="1024"
-            alt="Primer plano de una hamburguesa con tocino, queso cheddar fundido y salsa Mordida"
+            src={asset('img/products/nosotros-2.webp')}
+            srcSet={`${asset('img/products/nosotros-2-640.webp')} 640w, ${asset('img/products/nosotros-2.webp')} 1024w`}
+            sizes="(min-width: 900px) 480px, 90vw"
+            width="1024"
+            height="683"
+            alt="Hamburguesa con tocino y queso cheddar fundido sobre una tabla de madera, con una Hawaiana detrás"
             loading="lazy"
             decoding="async"
           />
@@ -47,12 +47,12 @@ export function About() {
       </div>
       <figure className="about__band">
         <img
-          src={asset('img/products/trio.webp')}
-          srcSet={`${asset('img/products/trio-640.webp')} 640w, ${asset('img/products/trio.webp')} 1024w`}
+          src={asset('img/products/nosotros-1.webp')}
+          srcSet={`${asset('img/products/nosotros-1-640.webp')} 640w, ${asset('img/products/nosotros-1.webp')} 1024w`}
           sizes="100vw"
           width="1024"
           height="683"
-          alt="Tres hamburguesas de Mordida Burger en fila sobre una tabla de madera"
+          alt="Hamburguesas Hawaiana y Spicy una junto a otra sobre una tabla de madera"
           loading="lazy"
           decoding="async"
         />

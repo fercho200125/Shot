@@ -31,6 +31,12 @@ export function isValidWhatsappNumber(number: string): boolean {
   return /^\d{8,15}$/.test(number);
 }
 
+/** "+593 98 483 3313" para celulares de Ecuador; "+<dígitos>" en otros casos. */
+export function formatWhatsappNumber(number: string): string {
+  const ec = /^593(\d{2})(\d{3})(\d{4})$/.exec(number);
+  return ec ? `+593 ${ec[1]} ${ec[2]} ${ec[3]}` : `+${number}`;
+}
+
 export function whatsappUrl(number: string, message: string): string | null {
   if (!isValidWhatsappNumber(number)) return null;
   return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;

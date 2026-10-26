@@ -17,18 +17,15 @@ npm run preview    # sirve dist/ en http://localhost:4173
 `dist/` es estático y usa rutas relativas (`base: './'`): se puede subir a cualquier hosting o subcarpeta
 (Netlify, Vercel, GitHub Pages, Cloudflare Pages…).
 
-## Activar el pedido por WhatsApp
+## Pedido por WhatsApp
 
-El botón **Enviar pedido por WhatsApp** queda desactivado hasta configurar el número oficial del negocio.
-Mientras tanto el cliente puede **copiar el resumen**.
+El número oficial (`593984833313`, es decir, wa.me/593984833313) está en [`src/config.ts`](src/config.ts).
+Al enviar, la web abre `https://wa.me/593984833313?text=<resumen del pedido>`. No confirma pedidos por su
+cuenta: la confirmación llega desde el local por WhatsApp. El cliente también puede **copiar el resumen**.
 
-1. Copia `.env.example` a `.env.local`.
-2. Escribe el número con código de país, solo dígitos: `VITE_WHATSAPP_NUMBER=593XXXXXXXXX`.
-3. Vuelve a ejecutar `npm run dev` o `npm run build`.
-
-En un hosting, define la misma variable en el panel de variables de entorno del build.
-La web abre `https://wa.me/<número>?text=<resumen>` y no confirma pedidos por su cuenta: la confirmación
-llega desde el local por WhatsApp.
+Para usar otro número sin tocar el código, define `VITE_WHATSAPP_NUMBER` (con código de país, solo dígitos)
+en `.env.local` o en las variables de entorno del hosting y vuelve a compilar. Si el número queda vacío
+o no es válido, el botón de envío se desactiva.
 
 ## Editar el menú
 
@@ -46,7 +43,15 @@ actualiza también esa prueba.
 
 ### Fotos
 
-Las fotos viven en `public/img/products/` en WebP, en dos tamaños (`nombre.webp` y `nombre-640.webp`).
+Las fotos viven en `public/img/products/` en WebP, en dos tamaños (`nombre.webp` y `nombre-640.webp`):
+
+| Archivo | Dónde se usa |
+| --- | --- |
+| `portada` | Foto de la portada (tres hamburguesas, la Hawaiana al centro) |
+| `bacon-paradise`, `hawaiana`, `spicy` | Tarjeta y ficha de cada producto |
+| `nosotros-1` | Franja ancha de la sección Nosotros (Hawaiana y Spicy) |
+| `nosotros-2` | Foto junto al texto de Nosotros |
+
 Para añadir o cambiar una:
 
 1. Exporta la foto en WebP (unos 1600 px en el lado mayor) y una copia de 640 px.
@@ -59,19 +64,21 @@ Los productos sin `photo` muestran la ilustración de marca indicada en `art`
 
 ### Datos del negocio
 
-Dirección, horario y redes sociales se editan en [`src/config.ts`](src/config.ts). Mientras estén en `null`
-o vacíos, la web muestra "Por confirmar".
+WhatsApp, dirección, horario y redes sociales se editan en [`src/config.ts`](src/config.ts):
+
+- Dirección: Avenida J15 entre calles 294 y 295, barrio Jocay, Manta.
+- Horario: todos los días, de 6:00 p. m. a 12:00 a. m.
+- Redes sociales: pendientes. Mientras la lista esté vacía, la web muestra "Por confirmar".
 
 ## Pendiente de confirmar con el negocio
 
 | Tema | Estado |
 | --- | --- |
-| Número oficial de WhatsApp | Sin configurar. El envío está desactivado. |
-| Dirección, horario y redes sociales | Se muestran como "Por confirmar". |
+| Redes sociales | Se muestran como "Por confirmar". |
 | **Spicy Crunch Burger — $10.49** | En el PDF solo existe como **texto oculto** bajo el bloque "CENSORED". Lo que se ve en *Insignias* es Bacon Paradise ($6.50). Está en `menu.ts` con `published: false`. También hay texto oculto "Truffle Royale", sin precio, que no se incluyó. |
 | Insignia "CENSORED" | Aparece como tarjeta informativa ("Insignia secreta"), sin precio y sin opción de pedirla. |
 | Complementos o extras | El PDF no define ninguno, así que no hay extras a la venta. |
-| Fotos | Faltan fotos reales de Meat, Spicy, bebidas y adicionales. Por ahora se usan ilustraciones de marca. Las fotos actuales miden 1024 px; con originales más grandes se verían más nítidas en pantallas retina. |
+| Fotos | Faltan fotos reales de Meat, bebidas y adicionales. Por ahora se usan ilustraciones de marca. Las fotos actuales miden 1024 px; con originales más grandes la portada se vería más nítida en pantallas grandes. |
 | Ortografía | Se corrigió "mozarella" → "mozzarella", "Piña" → "piña", "Coca cola" → "Coca-Cola" y "Fuse tea" → "Fuze Tea" (nombre comercial). |
 | Imagen de referencia | `mordida-referencia.png` no venía adjunta. El diseño sigue la dirección descrita en el encargo. |
 

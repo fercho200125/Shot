@@ -21,8 +21,9 @@
 
 .about__photo img {
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
+  object-position: 44% 50%;
 }
 
 .about__title {
@@ -71,9 +72,9 @@
 
 .about__band img {
   width: 100%;
-  height: clamp(260px, 42vw, 560px);
+  height: clamp(280px, 50vw, 640px);
   object-fit: cover;
-  object-position: 50% 45%;
+  object-position: 50% 58%;
   mask-image: linear-gradient(180deg, transparent, #000 18%, #000 78%, transparent);
 }
 
