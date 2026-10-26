@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { categories, productsIn, teasersIn, type CategoryId, type Product } from '../data/menu';
+import { categories, menuTabs, productsIn, teasersIn, type Product, type TabId } from '../data/menu';
 import { asset } from '../lib/asset';
 import { CategoryTabs, panelId, tabId } from './CategoryTabs';
 import { ProductCard } from './ProductCard';
@@ -12,13 +12,13 @@ interface Props {
 }
 
 export function MenuSection({ onOpenProduct, onAdded }: Props) {
-  const [active, setActive] = useState<CategoryId>('clasicas');
+  const [active, setActive] = useState<TabId>('hamburguesas');
   const barRef = useRef<HTMLDivElement>(null);
-  const category = categories.find((c) => c.id === active)!;
-  const items = productsIn(active);
-  const teasers = teasersIn(active);
+  const tab = menuTabs.find((t) => t.id === active)!;
+  const grouped = tab.categories.length > 1;
+  let index = 0; // orden de aparición, para escalonar la animación de las tarjetas
 
-  const change = (id: CategoryId) => {
+  const change = (id: TabId) => {
     setActive(id);
     // Si las pestañas están fijadas arriba, vuelve al inicio de la lista.
     const bar = barRef.current;
@@ -58,14 +58,31 @@ export function MenuSection({ onOpenProduct, onAdded }: Props) {
           aria-labelledby={tabId(active)}
           tabIndex={0}
         >
-          <p className="menu__tagline">{category.tagline}</p>
-          <div className="menu__grid" key={active}>
-            {items.map((p, i) => (
-              <ProductCard key={p.id} product={p} index={i} onOpen={onOpenProduct} onAdded={onAdded} />
-            ))}
-            {teasers.map((t, i) => (
-              <TeaserCard key={t.id} teaser={t} index={items.length + i} />
-            ))}
+          <p className="menu__tagline">{tab.tagline}</p>
+          <div key={active}>
+            {tab.categories.map((id) => {
+              const category = categories.find((c) => c.id === id)!;
+              return (
+                <section key={id} className="menu__group" aria-labelledby={grouped ? `group-${id}` : undefined}>
+                  {grouped && (
+                    <header className="menu__group-head">
+                      <h3 id={`group-${id}`} className="menu__group-title">
+                        {category.name}
+                      </h3>
+                      <p className="menu__group-tagline">{category.tagline}</p>
+                    </header>
+                  )}
+                  <div className="menu__grid">
+                    {productsIn(id).map((p) => (
+                      <ProductCard key={p.id} product={p} index={index++} onOpen={onOpenProduct} onAdded={onAdded} />
+                    ))}
+                    {teasersIn(id).map((t) => (
+                      <TeaserCard key={t.id} teaser={t} index={index++} />
+                    ))}
+                  </div>
+                </section>
+              );
+            })}
           </div>
         </div>
       </div>

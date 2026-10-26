@@ -1,5 +1,5 @@
 import { describe as suite, expect, it } from 'vitest';
-import { categories, describe, getProduct, productsIn, products, publishedProducts } from './menu';
+import { categories, describe, getProduct, menuTabs, productsIn, productsInTab, products, publishedProducts } from './menu';
 
 // Precios y textos tal como aparecen en la página 2 del PDF "Copia Menú Mordida".
 const PDF_PRICES: Record<string, number> = {
@@ -47,6 +47,12 @@ suite('menú', () => {
 
   it('cada categoría tiene productos', () => {
     for (const c of categories) expect(productsIn(c.id).length).toBeGreaterThan(0);
+  });
+
+  it('las pestañas agrupan cada categoría una sola vez', () => {
+    expect(menuTabs.map((t) => t.name)).toEqual(['Hamburguesas', 'Bebidas', 'Adicionales']);
+    expect(menuTabs.flatMap((t) => t.categories).sort()).toEqual(categories.map((c) => c.id).sort());
+    expect(productsInTab(menuTabs[0]!).map((p) => p.id)).toEqual(['meat', 'hawaiana', 'spicy', 'bacon-paradise']);
   });
 
   it('ids únicos', () => {

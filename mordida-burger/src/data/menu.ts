@@ -59,11 +59,33 @@ export interface Product {
   pending?: string;
 }
 
+/** Categorías del menú impreso. */
 export const categories: Category[] = [
-  { id: 'clasicas', name: 'Clásicas', tagline: 'Las de siempre. Pan de papa, 150 g de carne de res y papas fritas.' },
+  { id: 'clasicas', name: 'Clásicas', tagline: 'Las de siempre.' },
   { id: 'insignias', name: 'Insignias', tagline: 'Las especialidades de la casa.' },
   { id: 'bebidas', name: 'Bebidas', tagline: 'Para acompañar cada mordida.' },
   { id: 'adicionales', name: 'Adicionales', tagline: 'Para compartir… o no.' },
+];
+
+export type TabId = 'hamburguesas' | 'bebidas' | 'adicionales';
+
+/** Pestañas del menú web. Una pestaña con varias categorías las muestra con subtítulo. */
+export interface MenuTab {
+  id: TabId;
+  name: string;
+  tagline: string;
+  categories: CategoryId[];
+}
+
+export const menuTabs: MenuTab[] = [
+  {
+    id: 'hamburguesas',
+    name: 'Hamburguesas',
+    tagline: 'Todas con pan de papa, 150 g de carne de res y papas fritas.',
+    categories: ['clasicas', 'insignias'],
+  },
+  { id: 'bebidas', name: 'Bebidas', tagline: 'Para acompañar cada mordida.', categories: ['bebidas'] },
+  { id: 'adicionales', name: 'Adicionales', tagline: 'Para compartir… o no.', categories: ['adicionales'] },
 ];
 
 const photo = (name: string, width: number, height: number, alt: string, focus?: string): Photo => ({
@@ -271,4 +293,8 @@ export function productsIn(category: CategoryId): Product[] {
 
 export function teasersIn(category: CategoryId): Teaser[] {
   return teasers.filter((t) => t.category === category);
+}
+
+export function productsInTab(tab: MenuTab): Product[] {
+  return tab.categories.flatMap(productsIn);
 }
