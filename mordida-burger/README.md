@@ -17,6 +17,16 @@ npm run preview    # sirve dist/ en http://localhost:4173
 `dist/` es estático y usa rutas relativas (`base: './'`): se puede subir a cualquier hosting o subcarpeta
 (Netlify, Vercel, GitHub Pages, Cloudflare Pages…).
 
+### Versión de un solo archivo
+
+```bash
+npm run build:single   # genera dist-single/mordida-burger.html (≈1.2 MB)
+```
+
+Un único `.html` con el código, los estilos, las fuentes y las imágenes incrustados. Se abre con doble clic,
+funciona sin internet (salvo el envío por WhatsApp) y se puede subir tal cual a un hosting. Para la web
+publicada es preferible `dist/`, que carga las imágenes en el tamaño adecuado para cada pantalla.
+
 ## Pedido por WhatsApp
 
 El número oficial (`593984833313`, es decir, wa.me/593984833313) está en [`src/config.ts`](src/config.ts).
