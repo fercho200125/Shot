@@ -14,7 +14,14 @@ export function useModalDialog(open: boolean, onClose: () => void) {
     if (!dialog) return;
     if (open) {
       dialog.removeAttribute('data-closing');
-      if (!dialog.open) dialog.showModal();
+      if (!dialog.open) {
+        try {
+          dialog.showModal();
+        } catch {
+          // Algunos visores incrustados rechazan el modo modal: el panel se abre igual.
+          dialog.show();
+        }
+      }
       return;
     }
     if (!dialog.open) return;

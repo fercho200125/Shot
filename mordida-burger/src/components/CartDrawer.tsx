@@ -158,21 +158,24 @@ export function CartDrawer({ open, onClose, onBrowse }: Props) {
         ) : (
           <>
             <div className="cart__review">
-              <ul className="summary">
-                {lines.map((line) => (
-                  <li key={line.key}>
-                    <span className="summary__qty">{line.quantity}×</span>
-                    <span className="summary__name">
-                      {line.product.name}
-                      {line.extras.map((e) => (
-                        <small key={e.id}>+ {e.name}</small>
-                      ))}
-                      {line.note && <small>Nota: {line.note}</small>}
-                    </span>
-                    <span className="summary__price">{formatPrice(line.total)}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="summary">
+                <ul className="summary__lines">
+                  {lines.map((line) => (
+                    <li key={line.key}>
+                      <span className="summary__qty">{line.quantity}×</span>
+                      <span className="summary__name">
+                        {line.product.name}
+                        {line.extras.map((e) => (
+                          <small key={e.id}>+ {e.name}</small>
+                        ))}
+                        {line.note && <small>Nota: {line.note}</small>}
+                      </span>
+                      <span className="summary__price">{formatPrice(line.total)}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Totals subtotal={totals.subtotal} total={totals.total} />
+              </div>
 
               <div className="cart__fields">
                 <label htmlFor="order-name">
@@ -203,11 +206,11 @@ export function CartDrawer({ open, onClose, onBrowse }: Props) {
                 <summary>Ver el mensaje que se enviará</summary>
                 <pre>{message}</pre>
               </details>
+              <p className="cart__legal">Esta web no procesa pagos. El pago y la confirmación se coordinan con el local.</p>
             </div>
 
-            <footer className="cart__footer">
-              <Totals subtotal={totals.subtotal} total={totals.total} />
-
+            {/* Solo las acciones quedan fijas abajo, para que el resumen tenga espacio en pantallas bajas */}
+            <footer className="cart__footer cart__footer--actions">
               {sent && (
                 <div className="notice" role="status">
                   <p>
@@ -244,7 +247,6 @@ export function CartDrawer({ open, onClose, onBrowse }: Props) {
                 {copied ? <CheckIcon size={20} /> : <CopyIcon size={20} />}
                 {copied ? 'Resumen copiado' : 'Copiar resumen'}
               </button>
-              <p className="cart__legal">Esta web no procesa pagos. El pago y la confirmación se coordinan con el local.</p>
             </footer>
           </>
         )}
