@@ -1,5 +1,5 @@
 import { describe as suite, expect, it } from 'vitest';
-import { categories, describe, getProduct, menuTabs, productsIn, productsInTab, products, publishedProducts } from './menu';
+import { categories, describe, getProduct, menuTabs, productsIn, productsInTab, products, publishedProducts, teasers } from './menu';
 
 // Precios y textos tal como aparecen en la página 2 del PDF "Copia Menú Mordida".
 const PDF_PRICES: Record<string, number> = {
@@ -15,14 +15,31 @@ const PDF_PRICES: Record<string, number> = {
   'fuze-tea-personal': 75,
 };
 
+// Productos publicados que no vienen del PDF: confirmados aparte por el negocio.
+const NON_PDF_IDS = new Set(['nocturne']);
+
 suite('menú', () => {
   it('publica exactamente los productos visibles en el PDF con su precio', () => {
-    expect(Object.fromEntries(publishedProducts.map((p) => [p.id, p.price]))).toEqual(PDF_PRICES);
+    const fromPdf = publishedProducts.filter((p) => !NON_PDF_IDS.has(p.id));
+    expect(Object.fromEntries(fromPdf.map((p) => [p.id, p.price]))).toEqual(PDF_PRICES);
   });
 
   it('no publica la Spicy Crunch Burger (texto oculto en el PDF)', () => {
     expect(getProduct('spicy-crunch-burger')).toBeUndefined();
     expect(products.find((p) => p.id === 'spicy-crunch-burger')?.published).toBe(false);
+  });
+
+  it('publica la Nocturne, la insignia que antes aparecía censurada', () => {
+    const nocturne = getProduct('nocturne');
+    expect(nocturne?.category).toBe('insignias');
+    expect(nocturne?.price).toBe(650);
+    expect(describe(nocturne!)).toBe(
+      'Pan con flakes de ají, 150 gramos de carne de res, queso cheddar, tocino, salsa de trufa, mermelada de mora, aros de cebolla y salsa Mordida.',
+    );
+  });
+
+  it('ya no queda ninguna insignia censurada', () => {
+    expect(teasers).toEqual([]);
   });
 
   it('reproduce las descripciones del PDF', () => {
@@ -52,7 +69,7 @@ suite('menú', () => {
   it('las pestañas agrupan cada categoría una sola vez', () => {
     expect(menuTabs.map((t) => t.name)).toEqual(['Hamburguesas', 'Bebidas', 'Adicionales']);
     expect(menuTabs.flatMap((t) => t.categories).sort()).toEqual(categories.map((c) => c.id).sort());
-    expect(productsInTab(menuTabs[0]!).map((p) => p.id)).toEqual(['meat', 'hawaiana', 'spicy', 'bacon-paradise']);
+    expect(productsInTab(menuTabs[0]!).map((p) => p.id)).toEqual(['meat', 'hawaiana', 'spicy', 'bacon-paradise', 'nocturne']);
   });
 
   it('ids únicos', () => {

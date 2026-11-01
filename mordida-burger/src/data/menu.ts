@@ -178,6 +178,26 @@ export const products: Product[] = [
     published: true,
   },
   {
+    id: 'nocturne',
+    category: 'insignias',
+    name: 'Nocturne',
+    price: 650,
+    ingredients: [
+      'Pan con flakes de ají',
+      '150 gramos de carne de res',
+      'queso cheddar',
+      'tocino',
+      'salsa de trufa',
+      'mermelada de mora',
+      'aros de cebolla',
+      'salsa Mordida',
+    ],
+    photo: photo('nocturne', 1024, 683, 'Hamburguesa Nocturne con aros de cebolla, tocino, queso cheddar fundido, mermelada de mora y salsa de trufa'),
+    art: 'burger',
+    spicy: true,
+    published: true,
+  },
+  {
     id: 'spicy-crunch-burger',
     category: 'insignias',
     name: 'Spicy Crunch Burger',
@@ -259,14 +279,8 @@ export interface Teaser {
   text: string;
 }
 
-export const teasers: Teaser[] = [
-  {
-    id: 'insignia-secreta',
-    category: 'insignias',
-    title: 'Insignia secreta',
-    text: 'Todavía no podemos contarte nada.',
-  },
-];
+// Sin tarjetas censuradas por ahora: la insignia secreta ya es la Nocturne, publicada arriba.
+export const teasers: Teaser[] = [];
 
 /** Une los ingredientes como en el menú impreso: "a, b, c y d". */
 export function joinIngredients(items: string[]): string {

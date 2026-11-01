@@ -58,7 +58,7 @@ Las fotos viven en `public/img/products/` en WebP, en dos tamaños (`nombre.webp
 | Archivo | Dónde se usa |
 | --- | --- |
 | `portada` | Foto de la portada (tres hamburguesas, la Hawaiana al centro) |
-| `bacon-paradise`, `hawaiana`, `spicy` | Tarjeta y ficha de cada producto |
+| `bacon-paradise`, `hawaiana`, `spicy`, `nocturne` | Tarjeta y ficha de cada producto |
 | `nosotros-1` | Franja ancha de la sección Nosotros (Hawaiana y Spicy) |
 | `nosotros-2` | Foto junto al texto de Nosotros |
 
@@ -84,8 +84,7 @@ WhatsApp, dirección, horario y redes sociales se editan en [`src/config.ts`](sr
 
 | Tema | Estado |
 | --- | --- |
-| **Spicy Crunch Burger — $10.49** | En el PDF solo existe como **texto oculto** bajo el bloque "CENSORED". Lo que se ve en *Insignias* es Bacon Paradise ($6.50). Está en `menu.ts` con `published: false`. También hay texto oculto "Truffle Royale", sin precio, que no se incluyó. |
-| Insignia "CENSORED" | Aparece como tarjeta informativa ("Insignia secreta"), sin precio y sin opción de pedirla. |
+| **Spicy Crunch Burger — $10.49** | En el PDF solo existe como **texto oculto** bajo el bloque "CENSORED". Está en `menu.ts` con `published: false`. También hay texto oculto "Truffle Royale", sin precio, que no se incluyó. |
 | Complementos o extras | El PDF no define ninguno, así que no hay extras a la venta. |
 | Fotos | Faltan fotos reales de Meat, bebidas y adicionales. Por ahora se usan ilustraciones de marca. Las fotos actuales miden 1024 px; con originales más grandes la portada se vería más nítida en pantallas grandes. |
 | Ortografía | Se corrigió "mozarella" → "mozzarella", "Piña" → "piña", "Coca cola" → "Coca-Cola" y "Fuse tea" → "Fuze Tea" (nombre comercial). |
