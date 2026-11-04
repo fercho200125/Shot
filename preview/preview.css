@@ -1,0 +1,10 @@
+@import "../src/app/globals.css";
+@source "../src";
+@source "./";
+
+/* Las variables que en Next genera next/font. */
+html {
+  --font-inter: "Inter";
+  --font-script: "Dancing Script";
+  --font-serif: "Lora";
+}

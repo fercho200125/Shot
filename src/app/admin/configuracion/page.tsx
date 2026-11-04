@@ -7,6 +7,7 @@ export default function SettingsPage() {
   const { settings, updateSettings, resetDemo } = useAdmin();
   const [wa, setWa] = useState(settings.whatsappNumber);
   const [saved, setSaved] = useState(false);
+  const [askReset, setAskReset] = useState(false);
   return (
     <>
       <PageTitle title="Configuración" subtitle="Ajustes generales (guardados solo en este navegador durante la demo)." />
@@ -28,7 +29,15 @@ export default function SettingsPage() {
         <Panel>
           <h2 className="font-semibold">Datos de demostración</h2>
           <p className="mt-1 text-sm text-ink-soft">Restablece inventario, pedidos, movimientos y personalización a los valores DEMO iniciales.</p>
-          <button onClick={() => window.confirm("¿Restablecer todos los datos DEMO?") && resetDemo()} className="mt-3 h-10 rounded-full px-5 text-sm text-red-600 ring-1 ring-red-200 hover:bg-red-50">Restablecer demo</button>
+          {askReset ? (
+            <div className="mt-3 flex flex-wrap items-center gap-2 text-sm">
+              <span className="text-red-700">Se perderán los cambios hechos en la demo.</span>
+              <button onClick={() => { resetDemo(); setAskReset(false); }} className="h-10 rounded-full bg-red-600 px-5 font-medium text-white">Sí, restablecer</button>
+              <button onClick={() => setAskReset(false)} className="h-10 rounded-full px-4 ring-1 ring-line">No</button>
+            </div>
+          ) : (
+            <button onClick={() => setAskReset(true)} className="mt-3 h-10 rounded-full px-5 text-sm text-red-600 ring-1 ring-red-200 hover:bg-red-50">Restablecer demo</button>
+          )}
         </Panel>
       </div>
     </>

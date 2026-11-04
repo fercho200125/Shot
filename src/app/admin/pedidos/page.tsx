@@ -16,6 +16,7 @@ export default function OrdersPage() {
   const { orders, confirm, cancel } = state;
   const [f, setF] = useState<(typeof filters)[number]>("pendiente");
   const [open, setOpen] = useState<string | null>(null);
+  const [askCancel, setAskCancel] = useState<string | null>(null);
   const list = orders.filter((o) => f === "todos" || o.status === f);
 
   return (
@@ -75,8 +76,15 @@ export default function OrdersPage() {
                     {o.status === "pendiente" && (
                       <button disabled={missing.length > 0} onClick={() => confirm(o.id)} className="h-10 rounded-full bg-ink px-5 text-sm font-medium text-white disabled:opacity-40">Confirmar y descontar stock</button>
                     )}
-                    {o.status !== "cancelado" && (
-                      <button onClick={() => { if (window.confirm(o.status === "confirmado" ? "¿Cancelar? Las unidades vuelven al inventario." : "¿Cancelar este pedido?")) cancel(o.id); }} className="h-10 rounded-full px-5 text-sm ring-1 ring-line hover:bg-mist">Cancelar pedido</button>
+                    {o.status !== "cancelado" && askCancel !== o.id && (
+                      <button onClick={() => setAskCancel(o.id)} className="h-10 rounded-full px-5 text-sm ring-1 ring-line hover:bg-mist">Cancelar pedido</button>
+                    )}
+                    {o.status !== "cancelado" && askCancel === o.id && (
+                      <div className="animate-pop flex flex-wrap items-center gap-2 rounded-2xl bg-red-50 p-2 pl-3 text-sm text-red-700">
+                        {o.status === "confirmado" ? "Las unidades vuelven al inventario." : "¿Cancelar este pedido?"}
+                        <button onClick={() => { cancel(o.id); setAskCancel(null); }} className="h-9 rounded-full bg-red-600 px-4 font-medium text-white">Sí, cancelar</button>
+                        <button onClick={() => setAskCancel(null)} className="h-9 rounded-full px-3 text-red-700 hover:bg-red-100">No</button>
+                      </div>
                     )}
                   </div>
                 </div>
