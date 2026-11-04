@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<g stroke-linejoin="round" stroke-linecap="round">
+<g fill="#d9d3de" stroke="#d9d3de" stroke-width="58"><rect x="40" y="186" width="432" height="140" rx="70" transform="rotate(-30 256 256)"/></g>
+<g fill="#ffffff" stroke="#ffffff" stroke-width="50"><rect x="40" y="186" width="432" height="140" rx="70" transform="rotate(-30 256 256)"/></g>
+</g>
+<g transform="rotate(-30 256 256)">
+<rect x="40" y="186" width="432" height="140" rx="70" fill="#f6c9a8" stroke="#d89a72" stroke-width="8"/>
+<rect x="196" y="196" width="120" height="120" rx="14" fill="#fbe2cf"/>
+<g fill="#e0a985"><circle cx="216" cy="226" r="5"/><circle cx="216" cy="256" r="5"/><circle cx="216" cy="286" r="5"/><circle cx="256" cy="226" r="5"/><circle cx="256" cy="256" r="5"/><circle cx="256" cy="286" r="5"/><circle cx="296" cy="226" r="5"/><circle cx="296" cy="256" r="5"/><circle cx="296" cy="286" r="5"/></g>
+<path d="M256 236 C246 222 222 228 226 248 C230 264 256 280 256 280 C256 280 282 264 286 248 C290 228 266 222 256 236Z" fill="#ff7fa8" opacity=".85"/>
+<path d="M90 256 Q110 230 130 256 M382 256 Q402 230 422 256" fill="none" stroke="#d89a72" stroke-width="6" stroke-linecap="round"/>
+</g>
+</svg>

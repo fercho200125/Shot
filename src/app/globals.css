@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Sistema visual Medistamp — "Liquid Glass híbrido"
+   Tienda: claro (perla). Configurador: estudio oscuro (grafito).
+   El vidrio se usa con moderación: navegación, paneles flotantes y CTA.
+------------------------------------------------------------------- */
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, -apple-system, "SF Pro Text", system-ui, sans-serif;
+  --font-script: var(--font-script), "Brush Script MT", cursive;
+  --font-serif: var(--font-serif), Georgia, serif;
+
+  --color-pearl: #f7f6f4;
+  --color-mist: #eeedf1;
+  --color-ink: #17151c;
+  --color-ink-soft: #57545f;
+  --color-ink-mute: #8b8893;
+  --color-line: #e4e2e8;
+
+  --color-lila: #b9a3e3;
+  --color-lila-deep: #7c5fc4;
+  --color-lila-soft: #efe9fb;
+  --color-rosa: #f4a7c4;
+  --color-menta: #9edfcb;
+  --color-celeste: #a7c7f4;
+
+  --color-studio: #0d0d10;
+  --color-graphite: #1a1a1f;
+  --color-graphite-2: #24242b;
+
+  --radius-xl2: 1.25rem;
+  --radius-xl3: 1.75rem;
+
+  --ease-fluid: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-pearl);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-lila) 45%, transparent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-lila-deep);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* --- Vidrio claro (tienda) --- */
+.glass {
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.72), rgb(255 255 255 / 0.52));
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  border: 1px solid rgb(255 255 255 / 0.7);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.9),
+    0 1px 2px rgb(23 21 28 / 0.04),
+    0 8px 30px rgb(23 21 28 / 0.06);
+}
+
+/* --- Vidrio oscuro (configurador) --- */
+.glass-dark {
+  background: linear-gradient(180deg, rgb(40 40 48 / 0.62), rgb(22 22 27 / 0.58));
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgb(255 255 255 / 0.09);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.08),
+    0 20px 50px rgb(0 0 0 / 0.35);
+}
+
+/* Tarjeta sólida con profundidad suave (sin vidrio). */
+.card {
+  background: #fff;
+  border: 1px solid var(--color-line);
+  box-shadow: 0 1px 2px rgb(23 21 28 / 0.03), 0 10px 30px -12px rgb(23 21 28 / 0.08);
+}
+
+.studio-bg {
+  background:
+    radial-gradient(120% 80% at 50% 38%, #2a2a33 0%, #17171c 45%, #0b0b0e 100%);
+}
+
+/* Aparición al hacer scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.8s var(--ease-fluid), transform 0.8s var(--ease-fluid);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.92); opacity: 0; }
+  60% { transform: scale(1.02); opacity: 1; }
+  100% { transform: scale(1); }
+}
+.animate-pop { animation: pop 0.35s var(--ease-fluid) both; }
+
+@keyframes toast {
+  0% { transform: translate(-50%, 8px); opacity: 0; }
+  12% { transform: translate(-50%, 0); opacity: 1; }
+  80% { transform: translate(-50%, 0); opacity: 1; }
+  100% { transform: translate(-50%, -6px); opacity: 0; }
+}
+.animate-toast { animation: toast 1.8s var(--ease-fluid) both; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
+  50% { transform: translateY(-8px) rotate(var(--r, 0deg)); }
+}
+.animate-float { animation: float 6s ease-in-out infinite; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}

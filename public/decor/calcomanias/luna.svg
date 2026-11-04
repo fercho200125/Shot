@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<g stroke-linejoin="round" stroke-linecap="round">
+<g fill="#d9d3de" stroke="#d9d3de" stroke-width="58"><path d="M330 70 A190 190 0 1 0 450 330 A150 150 0 1 1 330 70Z"/><path d="M420 90 l12 30 30 12 -30 12 -12 30 -12 -30 -30 -12 30 -12Z"/></g>
+<g fill="#ffffff" stroke="#ffffff" stroke-width="50"><path d="M330 70 A190 190 0 1 0 450 330 A150 150 0 1 1 330 70Z"/><path d="M420 90 l12 30 30 12 -30 12 -12 30 -12 -30 -30 -12 30 -12Z"/></g>
+</g>
+<path d="M330 70 A190 190 0 1 0 450 330 A150 150 0 1 1 330 70Z" fill="#ffe08a" stroke="#e0b040" stroke-width="10"/>
+<path d="M420 90 l12 30 30 12 -30 12 -12 30 -12 -30 -30 -12 30 -12Z" fill="#b9a3e3"/>
+<path d="M150 300 Q165 315 180 300" fill="none" stroke="#5b4a2a" stroke-width="7" stroke-linecap="round"/>
+<path d="M210 330 Q225 345 240 330" fill="none" stroke="#5b4a2a" stroke-width="7" stroke-linecap="round"/>
+<ellipse cx="150" cy="340" rx="16" ry="9" fill="#ff8fb3" opacity=".6"/>
+<circle cx="190" cy="200" r="16" fill="#f2c95a"/><circle cx="260" cy="400" r="12" fill="#f2c95a"/>
+</svg>
