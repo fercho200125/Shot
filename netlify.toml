@@ -1,0 +1,9 @@
+# Netlify: publica la web de Mordida Burger, que vive en la carpeta mordida-burger/.
+[build]
+  base = "mordida-burger"
+  command = "npm run build"
+  # Relativo a `base`: mordida-burger/dist
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"

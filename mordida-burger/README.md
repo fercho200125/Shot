@@ -17,6 +17,18 @@ npm run preview    # sirve dist/ en http://localhost:4173
 `dist/` es estático y usa rutas relativas (`base: './'`): se puede subir a cualquier hosting o subcarpeta
 (Netlify, Vercel, GitHub Pages, Cloudflare Pages…).
 
+### Publicar en Netlify
+
+El archivo `netlify.toml` de la raíz del repositorio ya indica qué construir: carpeta base `mordida-burger`,
+comando `npm run build`, carpeta publicada `mordida-burger/dist` y Node 22. En Netlify solo hay que:
+
+1. Conectar el repositorio `fercho200125/Shot`.
+2. Elegir como rama de producción **`claude/gallant-albattani-2ezf90`** (la rama principal del repositorio
+   contiene otra página, la de Shot).
+3. Dejar vacíos los campos de construcción: el `netlify.toml` los rellena.
+
+Cada cambio que se suba a esa rama se publica solo.
+
 ### Versión de un solo archivo
 
 ```bash
